@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+/* ── Design tokens (Poppins + light/dark blue medical palette) ── */
+@theme {
+  --font-sans: "Poppins", "Noto Sans Devanagari", "Noto Sans Telugu", "Noto Sans Tamil",
+    ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand — light blue (50–400) into deep blue (500–900) */
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e3a8a;
+  --color-brand-900: #172554;
+
+  /* Ink — dark blue-navy instead of purple-slate */
+  --color-ink: #16264a;
+  --color-ink-soft: #3d5278;
+  --color-muted: #6a7f9f;
+  --color-line: #e3ebf7;
+  --color-canvas: #f8fbff;
+
+  --color-ok: #10a37f;
+  --color-warn: #d97706;
+  --color-low: #38bdf8;
+  --color-crit: #dc2626;
+
+  --shadow-card: 0 1px 2px rgba(22, 38, 74, 0.04), 0 8px 24px rgba(22, 38, 74, 0.07);
+  --shadow-pop: 0 12px 40px rgba(22, 38, 74, 0.16);
+}
+
+html {
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+}
+
+/* Shared button behaviour — a real utility so .btn-primary/.btn-ghost can @apply it */
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+  border: 1px solid transparent;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  &:focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
+}
+
+body {
+  background: #fff;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  /* ── Buttons (shared base defined as a @utility so variants can @apply it) ── */
+  .btn-primary {
+    @apply btn bg-brand-500 text-white px-6 py-3 hover:bg-brand-600 active:scale-[.98];
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.32);
+  }
+  .btn-ghost {
+    @apply btn bg-white text-ink px-6 py-3 border border-line hover:border-brand-300 hover:text-brand-600;
+  }
+  .btn-soft {
+    @apply btn bg-brand-50 text-brand-700 px-5 py-2.5 hover:bg-brand-100;
+  }
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+
+  /* ── Surfaces ── */
+  .card {
+    @apply bg-white rounded-3xl border border-line shadow-card;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
+  }
+  .input {
+    @apply w-full rounded-xl border border-line bg-white px-4 py-2.5 text-sm text-ink
+      placeholder:text-muted/70 focus:border-brand-400 focus:ring-2 focus:ring-brand-100 outline-none
+      transition-colors;
+  }
+  .label {
+    @apply block text-xs font-semibold text-ink-soft mb-1.5 uppercase tracking-wide;
+  }
+
+  /* ── Section rhythm ── */
+  .section {
+    @apply mx-auto max-w-7xl px-5 sm:px-8;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50
+      px-3.5 py-1.5 text-xs font-semibold text-brand-700;
+  }
+  .h-display {
+    @apply font-extrabold tracking-tight text-ink leading-[1.06];
+  }
+}
+
+/* ── Phone mockup (used on the landing page) ─────────────────────────────── */
+.phone {
+  width: 264px;
+  border-radius: 40px;
+  background: #1b2b4b;
+  padding: 9px;
+  box-shadow: var(--shadow-pop);
+}
+.phone-screen {
+  border-radius: 32px;
+  overflow: hidden;
+  background: #fff;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Marquee (logo strip) ────────────────────────────────────────────────── */
+@keyframes drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: drift 34s linear infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.floaty { animation: floaty 6s ease-in-out infinite; }
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-line);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  animation: shimmer 1.4s infinite;
+}
+
+/* ── Leaflet overrides ───────────────────────────────────────────────────── */
+.leaflet-container {
+  font-family: var(--font-sans);
+  border-radius: 1.5rem;
+  z-index: 0;
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  box-shadow: var(--shadow-pop);
+}
+.leaflet-popup-content { margin: 12px 16px; font-size: 13px; }
+.hospital-pin {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50% 50% 50% 4px;
+  background: #3b82f6;
+  color: #fff;
+  border: 2.5px solid #fff;
+  box-shadow: 0 4px 12px rgba(22, 38, 74, 0.35);
+  transform: rotate(-45deg);
+  font-size: 15px;
+}
+.hospital-pin span { transform: rotate(45deg); }
+.hospital-pin.you { background: #16264a; }
+.hospital-pin.rated { background: #1d4ed8; }
+
+/* ── Scrollbars ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #cfdcef; border-radius: 999px; border: 3px solid #fff; }
+::-webkit-scrollbar-thumb:hover { background: #b3c6e0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track, .floaty, .skeleton::after { animation: none !important; }
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #e9e6ef; font-family: Inter, sans-serif; }
+  .page { width: 720px; margin: 24px auto; background: #fff; padding: 34px 40px; box-shadow: 0 6px 24px rgba(0,0,0,.12); }
+  .head { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #f4643c; padding-bottom: 12px; }
+  .clinic { font-size: 22px; font-weight: 600; color: #332f3c; }
+  .sub { font-size: 12px; color: #7c778c; margin-top: 3px; }
+  .right { text-align: right; font-size: 12px; color: #57526a; line-height: 1.7; }
+  .meta { display: flex; gap: 32px; margin: 16px 0 6px; font-size: 13px; color: #332f3c; }
+  .meta b { font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 13px; }
+  th { text-align: left; background: #fff3ef; color: #be3d15; padding: 8px 10px; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
+  td { padding: 9px 10px; border-bottom: 1px solid #ece9f2; color: #332f3c; }
+  .hand { font-family: Caveat, cursive; font-size: 20px; color: #1f3a68; }
+  .sig { margin-top: 26px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .sigline { border-top: 1px solid #332f3c; width: 200px; padding-top: 5px; font-size: 12px; color: #57526a; text-align: center; }
+  .note { margin-top: 18px; background: #fbfafd; border-left: 3px solid #f4643c; padding: 10px 14px; font-size: 12px; color: #57526a; }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="head">
+      <div>
+        <div class="clinic">Sunrise Clinic &amp; Diagnostic Centre</div>
+        <div class="sub">Road No. 12, Banjara Hills, Hyderabad – 500034 · Ph: 040 2345 6789</div>
+      </div>
+      <div class="right">
+        OP No: <b>44821</b><br />
+        Date: <b>04/10/2026</b><br />
+        Time: 11:20 AM
+      </div>
+    </div>
+
+    <div class="meta">
+      <span><b>Patient:</b> Ananya Sharma</span>
+      <span><b>Age/Sex:</b> 42 / F</span>
+      <span><b>Blood Grp:</b> B+</span>
+    </div>
+    <div class="meta">
+      <span><b>Referred by:</b> Dr. Meera Patel (MD, General Medicine)</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference Range</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>HbA1c</td><td><b>8.2</b></td><td>%</td><td>4.0 – 5.6</td></tr>
+        <tr><td>Fasting Blood Glucose</td><td><b>142</b></td><td>mg/dL</td><td>70 – 100</td></tr>
+        <tr><td>Total Cholesterol</td><td><b>218</b></td><td>mg/dL</td><td>&lt; 200</td></tr>
+        <tr><td>LDL Cholesterol</td><td><b>146</b></td><td>mg/dL</td><td>&lt; 100</td></tr>
+        <tr><td>HDL Cholesterol</td><td>44</td><td>mg/dL</td><td>40 – 60</td></tr>
+        <tr><td>Serum Creatinine</td><td>0.9</td><td>mg/dL</td><td>0.6 – 1.1</td></tr>
+        <tr><td>Haemoglobin</td><td>13.1</td><td>g/dL</td><td>12.0 – 16.0</td></tr>
+        <tr><td>Blood Pressure</td><td>138/86</td><td>mmHg</td><td>&lt; 130/85</td></tr>
+      </tbody>
+    </table>
+
+    <div class="hand" style="margin-top:20px;">Rx</div>
+    <div class="hand">1. Metformin 500 mg — 1-0-1 after food, 90 days</div>
+    <div class="hand">2. Atorvastatin 10 mg — 0-0-1 after dinner, 90 days</div>
+    <div class="hand">3. Vitamin D3 60,000 IU — once weekly after breakfast, 8 weeks</div>
+
+    <div class="note">
+      Advised: 30 min daily walking, low-GI diet. Review after 3 months with HbA1c and lipid profile.
+      Diagnosis: Type 2 Diabetes Mellitus (E11.9), Dyslipidaemia (E78.5), Essential Hypertension (I10).
+    </div>
+
+    <div class="sig">
+      <div class="sigline">Patient / Attendant</div>
+      <div class="sigline">Dr. Meera Patel · Reg. No. TSMC 44821</div>
+    </div>
+  </div>
+</body>
+</html>
